@@ -17,7 +17,6 @@
                 <nav aria-label="breadcrumb">
                     <h6 class="text-white font-weight-bolder ms-2">Profile</h6>
                 </nav>
-
             </div>
         </nav>
         <!-- End Navbar -->
@@ -35,10 +34,10 @@
                     <div class="col-auto my-auto">
                         <div class="h-100">
                             <h5 class="mb-1">
-                                Alec Thompson
+                                <span id="h_name"></span>
                             </h5>
                             <p class="mb-0 font-weight-bold text-sm">
-                                CEO / Co-Founder
+                                <span id="headline"></span>
                             </p>
                         </div>
                     </div>
@@ -46,7 +45,7 @@
                         <div class="nav-wrapper position-relative end-0">
                             <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
                                 <li class="nav-item">
-                                    <a href="javascript:;">
+                                    <a href="javascript:;" data-toggle="modal" data-target="#userModel" id="profileModel">
                                         <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" aria-hidden="true"></i><span class="sr-only">Edit Profile</span>
                                     </a>
                                 </li>
@@ -68,20 +67,20 @@
                             <ul class="list-group">
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked>
-                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Email me when someone follows me</label>
+                                        <input class="form-check-input ms-auto" type="checkbox"  id="email_follow_me">
+                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="email_follow_me"   >Email me when someone follows me</label>
                                     </div>
                                 </li>
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault1">
-                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault1">Email me when someone answers on my post</label>
+                                        <input class="form-check-input ms-auto" type="checkbox" id="email_answers_my_post">
+                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="email_answers_my_post" >Email me when someone answers on my post</label>
                                     </div>
                                 </li>
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2" checked>
-                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault2">Email me when someone mentions me</label>
+                                        <input class="form-check-input ms-auto" type="checkbox"  id="email_someone_mentions_me">
+                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="email_someone_mentions_me">Email me when someone mentions me</label>
                                     </div>
                                 </li>
                             </ul>
@@ -89,20 +88,20 @@
                             <ul class="list-group">
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault3">
-                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">New launches and projects</label>
+                                        <input class="form-check-input ms-auto" type="checkbox" id="new_launches_projects">
+                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="new_launches_projects" >New launches and projects</label>
                                     </div>
                                 </li>
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault4" checked>
-                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault4">Monthly product updates</label>
+                                        <input class="form-check-input ms-auto" type="checkbox" id="monthly_product_updates" >
+                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="monthly_product_updates" >Monthly product updates</label>
                                     </div>
                                 </li>
                                 <li class="list-group-item border-0 px-0 pb-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault5">
-                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault5">Subscribe to newsletter</label>
+                                        <input class="form-check-input ms-auto" type="checkbox" id="subscribe_to_newsletter">
+                                        <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="subscribe_to_newsletter" >Subscribe to newsletter</label>
                                     </div>
                                 </li>
                             </ul>
@@ -117,32 +116,101 @@
                                     <h6 class="mb-0">Profile Information</h6>
                                 </div>
                                 <div class="col-md-4 text-end">
-                                    <a href="javascript:;">
-                                        <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                                    <a href="javascript:;" data-toggle="modal" data-target="#userInfoModel" id="getUserInfo">
+                                        <i class="fas fa-user-edit text-secondary text-sm" title="Edit Profile"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body p-3">
-                            <p class="text-sm">
-                                Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).
-                            </p>
+                            <p class="text-sm" id="description"></p>
                             <hr class="horizontal gray-light my-4">
                             <ul class="list-group">
-                                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; Alec M. Thompson</li>
-                                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; (44) 123 1234 123</li>
-                                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; alecthompson@mail.com</li>
-                                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; USA</li>
+                                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; <span id="name"></span></li>
+                                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; <span id="mobile"></span></li>
+                                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; <span id="email"></span></li>
+                                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; <span id="location"></span></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
             </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="userModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="updateUser">
+                        <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="name">Enter Name</label>
+                                    <input type="text" class="form-control" placeholder="Name" name="name"  id="fname">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="name">Enter headline</label>
+                                    <input type="text" class="form-control" placeholder="title" name="title" id="ftitle">
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_1">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
+        <!-- Modal Information-->
+        <div class="modal fade" id="userInfoModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="updateUserInfo">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="name">Enter Name</label>
+                                <input type="text" class="form-control" placeholder="Name" name="name"  id="infoName">
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Enter Description</label>
+                                <textarea name="description" id="infoDescription" class="form-control" placeholder="Description"  cols="30" rows="10"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Enter Mobile</label>
+                                <input type="text" class="form-control" placeholder="Mobile" name="mobile"  id="infoMobile">
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Enter Email</label>
+                                <input type="text" class="form-control" placeholder="email" name="email"  id="infoEmail">
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Enter Location</label>
+                                <input type="text" class="form-control" placeholder="location" name="location"  id="infoLocation">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_2">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </main>
 <?php include "../include/js.php" ?>
+<script src="../assets/js/custom/profile.js"></script>
 </body>
 </html>

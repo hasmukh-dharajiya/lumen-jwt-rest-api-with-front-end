@@ -18,7 +18,8 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
-    <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+    <link href="assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+    <link href="assets/css/toastr.css" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -28,8 +29,8 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-5 text-center mx-auto">
-                    <h1 class="text-white mb-2 mt-5">Welcome!</h1>
-                    <p class="text-lead text-white">create new account for free.</p>
+                    <h1 class="text-white mb-2 mt-5">Welcome Back!</h1>
+                    <p class="text-lead text-white">Login Your Account.</p>
                 </div>
             </div>
         </div>
@@ -39,30 +40,20 @@
             <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
                 <div class="card z-index-0">
                     <div class="card-header text-center pt-4">
-                        <h5>Create Account</h5>
+                        <h5>Login</h5>
                     </div>
-
                     <div class="card-body">
-                        <form role="form text-left">
+                        <form id="login">
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="email-addon">
+                                <input type="text" class="form-control" placeholder="Email ID" name="email">
                             </div>
                             <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
-                            </div>
-                            <div class="mb-3">
-                                <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
-                            </div>
-                            <div class="form-check form-check-info text-left">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
-                                </label>
+                                <input type="password" class="form-control" placeholder="Password" name="password">
                             </div>
                             <div class="text-center">
-                                <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>
+                                <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Login Now</button>
                             </div>
-                            <p class="text-sm mt-3 mb-0">Already have an account? <a href="javascript:;" class="text-dark font-weight-bolder">Sign in</a></p>
+                            <p class="text-sm mt-3 mb-0">Create New Account? <a href="register.php" class="text-dark font-weight-bolder">register</a></p>
                         </form>
                     </div>
                 </div>
@@ -70,11 +61,10 @@
         </div>
     </div>
 </section>
-<script src="assets/js/core/popper.min.js"></script>
-<script src="assets/js/core/bootstrap.min.js"></script>
-<script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
-<script src="assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+<script src="assets/js/plugins/jquery.js"></script>
+<script src="assets/js/plugins/toastr.min.js"></script>
+<script src="assets/js/custom/dashboard-client.js"></script>
+<script src="assets/js/custom/login.js"></script>
 </body>
 
 </html>

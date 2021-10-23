@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Classes\UserClass;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use  Intervention\Image\ImageManagerStatic as Image;
 
 class UserController extends Controller
 {
@@ -16,8 +16,10 @@ class UserController extends Controller
     {
         $this->user = $user;
     }
-    public function changePassord(Request $request){
-        $validator = Validator::make($request->all(),[
+
+    public function changePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
             'current_password' => 'required',
             'new_password' => 'required|same:confirm_password|min:8',
             'confirm_password' => 'required|min:8'
@@ -28,11 +30,87 @@ class UserController extends Controller
         }
         $email = Auth::user()->email;
 
-        return $this->user->changePassord($email,$request->current_password,$request->new_password);
+        return $this->user->changePassword($email, $request->current_password, $request->new_password);
     }
-    public function logout(Request $request)
+
+    public function getProfile(){
+        return $this->user->getProfile();
+    }
+    public function updateSetting(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'setting_name' => 'required|string',
+            'setting_value' => 'required|boolean'
+        ]);
+        if ($validator->fails()) {
+            $error = $validator->errors()->first();
+            return response()->json(['status' => false, 'message' => $error])->setStatusCode(400);
+        }
+        $email = Auth::user()->email;
+        return $this->user->updateSetting($email, $request->setting_name, $request->setting_value);
+    }
+
+    public function updateProfileHeadline(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'headline' => 'required|string|max:100'
+        ]);
+        if ($validator->fails()) {
+            $error = $validator->errors()->first();
+            return response()->json(['status' => false, 'message' => $error])->setStatusCode(400);
+        }
+        $email = Auth::user()->email;
+        return $this->user->updateProfileHeadline($email, $request->name, $request->headline);
+    }
+
+    public function updateProfileInformation(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+             'mobile' => 'required|max:10',
+            'description' => 'required|string',
+            'location' => 'required|string'
+        ]);
+        if ($validator->fails()) {
+            $error = $validator->errors()->first();
+            return response()->json(['status' => false, 'message' => $error])->setStatusCode(400);
+        }
+        $email = Auth::user()->email;
+            return $this->user->updateProfileInformation($email, $request->name, $request->mobile, $request->description, $request->location);
+    }
+
+//    public function updateProfilePic(Request $request)
+//    {
+//        $validator = Validator::make($request->all(), [
+//            'image' => 'image|mimes:jpg,png,jpeg,svg',
+//        ]);
+//        if ($validator->fails()) {
+//            $error = $validator->errors()->first();
+//            return response()->json(['status' => false, 'message' => $error])->setStatusCode(400);
+//        }
+//        $user = (object) ['image' => ""];
+//        $original_filename = $request->file('image')->getClientOriginalName();
+//        dd($original_filename);
+//        $file_extension = end($original_filename_arr);
+//        $destination_path = './upload/user/';
+//        $image = 'U-' . time() . '.' . $file_extension;
+//
+//        if ($request->file('image')->move($destination_path, $image)) {
+//            $user->image = '/upload/user/' . $image;
+//            return response()->json(['status' => true, 'message' => 'profile update success'])->setStatusCode(200);
+//        }
+//
+//        return response()->json(['status' => false, 'message' => 'error while profile update'])->setStatusCode(400);
+//
+////        $email = Auth::user()->email;
+////        return $this->user->updateProfileInformation($email, $request->name, $request->mobile, $request->description, $request->location);
+//    }
+
+    public function logoutUser(Request $request)
     {
         $token = $request->token;
+
         if (Auth::invalidate($token)) {
             return response()->json([
                 'status' => true,

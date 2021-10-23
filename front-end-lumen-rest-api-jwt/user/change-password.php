@@ -3,7 +3,7 @@
 <head>
     <?php include "../include/meta.php" ?>
     <title>
-        Dashboard
+        Change Password | Dashboard
     </title>
     <?php include "../include/css.php" ?>
 </head>
@@ -31,17 +31,17 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form role="form text-left">
+                        <form id="change_password">
                             <div class="mb-3">
-                                <input type="password" class="form-control" placeholder="Old Password">
+                                <input type="password" class="form-control" placeholder="current Password" name="current_password">
                             </div>
                             <div class="mb-3">
-                                <input type="password" class="form-control" placeholder="New Password">
+                                <input type="password" class="form-control" placeholder="New Password" name="new_password">
                             </div>
                             <div class="mb-3">
-                                <input type="password" class="form-control" placeholder="Conform Password">
+                                <input type="password" class="form-control" placeholder="Conform Password" name="confirm_password">
                             </div>
-                            <button type="button" class="btn bg-gradient-dark my-4 mb-2">Sign up</button>
+                            <button type="submit" class="btn bg-gradient-dark my-4 mb-2">Change Password</button>
                         </form>
                     </div>
                 </div>
@@ -50,5 +50,6 @@
     </div>
 </main>
 <?php include "../include/js.php" ?>
+<script src="../assets/js/custom/change-passord.js"></script>
 </body>
 </html>

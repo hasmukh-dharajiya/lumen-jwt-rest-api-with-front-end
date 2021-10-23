@@ -85,4 +85,35 @@ class Task extends Model
             return false;
         }
     }
+
+    public function getTotalTask()
+    {
+        try {
+            $result = $this->count();
+            if ($result > 0) {
+                return $result;
+            }
+            return 0;
+        } catch (QueryException $ex) {
+            Log::info("TaskModel Error", ["getTotalProduct" => $ex->getMessage(), "line" => $ex->getLine()]);
+            return 0;
+        }
+    }
+    public function getCompleteTask()
+    {
+        try {
+            $result = $this->where('status',1)
+                ->count();
+            if ($result > 0) {
+                return $result;
+            }
+            return 0;
+        } catch (QueryException $ex) {
+            Log::info("TaskModel Error", ["getTotalProduct" => $ex->getMessage(), "line" => $ex->getLine()]);
+            return 0;
+        }
+    }
+
+
+
 }

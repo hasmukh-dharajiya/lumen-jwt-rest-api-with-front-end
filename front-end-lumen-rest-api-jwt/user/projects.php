@@ -31,6 +31,7 @@
                             <table class="table align-items-center justify-content-center mb-0">
                                 <thead>
                                 <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Budget</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">User Responsible</th>
@@ -39,39 +40,8 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2">
-                                            <div class="my-auto">
-                                                <h6 class="mb-0 text-sm">Spotify</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex px-2">
-                                            <div class="my-auto">
-                                                <h6 class="mb-0 text-sm">jone Due</h6>
-                                            </div>
-                                        </div>
-                                    </td>
+                                <tbody id="shoeProject">
 
-                                    <td>
-                                        <p class="text-sm font-weight-bold mb-0">$2,500</p>
-                                    </td>
-                                    <td>
-                                        <span class="text-xs font-weight-bold">working</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <div class="d-flex align-items-center justify-content-center">
-                                            <span class="me-2 text-xs font-weight-bold">60%</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt" aria-hidden="true"></i></a>
-                                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i></a>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -80,7 +50,52 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal-->
+    <div class="modal fade" id="editProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="updateUserInfo">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="name">Project Name</label>
+                            <input type="text" class="form-control" placeholder="Name" name="name"  id="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name">Budget</label>
+                            <input type="text" class="form-control" placeholder="Budget" name="budget"  id="budget">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name">User Responsible</label>
+                            <input type="text" class="form-control" placeholder="User Responsible" name="user_responsible"  id="user_responsible">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name">status</label>
+                            <input type="text" class="form-control" placeholder="email" name="email"  id="infoEmail">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name">Enter Location</label>
+                            <input type="text" class="form-control" placeholder="location" name="location"  id="infoLocation">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_2">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </main>
 <?php include "../include/js.php" ?>
+<script src="../assets/js/custom/project.js"></script>
 </body>
 </html>

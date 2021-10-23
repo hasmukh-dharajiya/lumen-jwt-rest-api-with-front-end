@@ -9,14 +9,17 @@ use Illuminate\Support\Facades\Validator;
 class TaskController extends Controller
 {
     private $task;
+
     public function __construct(TaskClass $task)
     {
         $this->task = $task;
     }
+
     public function getTask()
     {
         return $this->task->getTask();
     }
+
     public function addTask(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -35,10 +38,12 @@ class TaskController extends Controller
         $status = $request->status;
         return $this->task->addTask($name, $due_date, $responsible_user, $status);
     }
+
     public function getSingleTask($id)
     {
         return $this->task->getSingleTask($id);
     }
+
     public function updateTask(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -57,8 +62,9 @@ class TaskController extends Controller
         $due_date = $request->due_date;
         $responsible_user = $request->responsible_user;
         $status = $request->status;
-        return $this->task->updateTask($id,$name, $due_date, $responsible_user, $status);
+        return $this->task->updateTask($id, $name, $due_date, $responsible_user, $status);
     }
+
     public function deleteTask($id)
     {
         return $this->task->deleteTask($id);

@@ -28,9 +28,9 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today Project</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Project</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        $53,000
+                                        <span id="total_project">0</span>
                                     </h5>
                                 </div>
                             </div>
@@ -49,9 +49,9 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today Project</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Task</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        2,300
+                                        <span id="total_task">0</span>
                                     </h5>
                                 </div>
                             </div>
@@ -70,9 +70,9 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today Complete Project</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Complete Project</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        +3,462
+                                        <span id="total_complete_project">0</span>
                                     </h5>
                                 </div>
                             </div>
@@ -91,9 +91,9 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today Complete Task</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Complete Task</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        $103,430
+                                        <span id="total_complete_task">0</span>
                                     </h5>
                                 </div>
                             </div>
@@ -122,42 +122,16 @@
                             <table class="table align-items-center justify-content-center mb-0">
                                 <thead>
                                 <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Budget</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">User Responsible</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Status</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Create At</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2">
-                                            <div class="my-auto">
-                                                <h6 class="mb-0 text-sm">Spotify</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex px-2">
-                                            <div class="my-auto">
-                                                <h6 class="mb-0 text-sm">jone Due</h6>
-                                            </div>
-                                        </div>
-                                    </td>
+                                <tbody id="projectData">
 
-                                    <td>
-                                        <p class="text-sm font-weight-bold mb-0">$2,500</p>
-                                    </td>
-                                    <td>
-                                        <span class="text-xs font-weight-bold">working</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <div class="d-flex align-items-center justify-content-center">
-                                            <span class="me-2 text-xs font-weight-bold">60%</span>
-                                        </div>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -180,33 +154,15 @@
                             <table class="table align-items-center justify-content-center mb-0">
                                 <thead>
                                 <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Responsible User</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7  text-center ps-2">Status</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Due Date</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2">
-                                            <div class="my-auto">
-                                                <h6 class="mb-0 text-sm">Spotify</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm font-weight-bold mb-0">$2,500</p>
-                                    </td>
-                                    <td>
-                                        <span class="text-xs font-weight-bold">working</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <div class="d-flex align-items-center justify-content-center">
-                                            <span class="me-2 text-xs font-weight-bold">60%</span>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <tbody id="taskData">
+
                                 </tbody>
                             </table>
                         </div>
@@ -217,5 +173,6 @@
     </div>
 </main>
 <?php include "../include/js.php" ?>
+<script src="../assets/js/custom/dashboard.js"></script>
 </body>
 </html>

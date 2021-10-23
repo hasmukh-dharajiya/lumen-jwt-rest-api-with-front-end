@@ -14,6 +14,6 @@ class DashboardController extends Controller
         $this->dashboard = $dashboard;
     }
     public function getDashboard(){
-
+        return $this->dashboard->getDashboard();
     }
 }
