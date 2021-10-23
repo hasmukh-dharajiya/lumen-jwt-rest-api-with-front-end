@@ -35,6 +35,42 @@ const DashboardClient = {
             });
         });
     },
+    put(url, postData = []) {
+        this.csrf();
+        return new Promise(function (resolve, reject) {
+            $.ajax({
+                url: url,
+                method: 'put',
+                data: postData,
+                headers: {'Authorization': 'Bearer ' + DashboardHelper.getAccessToken()}
+            }).done(response => {
+                resolve(response);
+            }).fail(error => {
+                reject(error);
+            });
+        });
+    },
+    delete(url, jsonData = []) {
+        if(jsonData.length > 0) {
+            url += '?' +
+                Object.keys(jsonData).map(function(key) {
+                    return encodeURIComponent(key) + '=' +
+                        encodeURIComponent(jsonData[key]);
+                }).join('&');
+        }
+        this.csrf();
+        return new Promise(function (resolve, reject) {
+            $.ajax({
+                url: url,
+                method: 'delete',
+                headers: {'Authorization': 'Bearer ' + DashboardHelper.getAccessToken()}
+            }).done(response => {
+                resolve(response);
+            }).fail(error => {
+                reject(error);
+            });
+        });
+    },
     csrf() {
         return $.ajaxSetup({
             headers: {
@@ -136,5 +172,37 @@ const DashboardHelper = {
         }else {
             return null
         }
+    },
+    preLoaderShow(){
+        $('.preloader').fadeOut('slow');
+    },
+    preLoaderHide(){
+        $('.preloader').fadeOut('hide');
+    },
+    unAuthorize(){
+        window.location.href = '../login.php';
+    },
+    authAlive(){
+        DashboardClient.get(DashboardClient.domainUrl()+"/v1/auth_alive")
+            .then((response) => {
+                if (response.status === true){
+                    window.location.href = "user/";
+                }
+            })
+            .catch((error) => {})
+    },
+    authAliveDash(){
+        DashboardClient.get(DashboardClient.domainUrl()+"/v1/auth_alive")
+            .then((response) => {
+                if (response.status === false){
+                    window.location.href = "login.php";
+                }
+            })
+            .catch((error) => {
+                window.location.href = "../login.php";
+            })
+    },
+    destroyAccessToken: () =>{
+        localStorage.removeItem('access_token');
     },
 };

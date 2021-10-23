@@ -16,7 +16,7 @@ class Project extends Model
     {
         try {
             $result = $this->all();
-            if (isset($result) && !empty($result)) {
+            if (count($result) > 0) {
                 return $result;
             }
             return null;
@@ -46,7 +46,7 @@ class Project extends Model
     public function getSingleProject($id)
     {
         try {
-            $result = $this->where('id', $id)->get();
+            $result = $this->where('id', $id)->first();
             if (isset($result) & !empty($result)) {
                 return $result;
             }

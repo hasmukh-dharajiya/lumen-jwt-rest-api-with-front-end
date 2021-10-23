@@ -1,3 +1,4 @@
+DashboardHelper.authAlive()
 $(document).on("submit", "#register", function (e) {
     e.preventDefault()
     let loginData = DashboardHelper.serializeObject($(this));

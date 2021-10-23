@@ -6,6 +6,7 @@ use App\Classes\UserClass;
 use Illuminate\Http\Request;
 use  App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -35,7 +36,6 @@ class AuthController extends Controller
         $password = $request->password;
         return $this->authManager->register($name,$email,$password);
     }
-
     public function login(Request $request)
     {
         try {
@@ -57,6 +57,15 @@ class AuthController extends Controller
             return response()->json(['status'=>false,'message'=>'Authentication Failed !',"error"=>$exception->getMessage()])->setStatusCode(400);
         }
     }
-
-
+    public function authAlive(){
+        try {
+            if (Auth::check()){
+                return response()->json(["status"=>true,"message"=>"Auth Alive success"])->setStatusCode(200);
+            }
+            return response()->json(["status"=>false,"message"=>"Auth Alive Failed"])->setStatusCode(400);
+        }catch (\Exception $ex){
+            Log::info("AuthController",["authAlive"=>$ex->getMessage(),"line"=>$ex->getLine()]);
+            return response()->json(["status"=>false,"message"=>"Auth Alive Failed"])->setStatusCode(500);
+        }
+    }
 }

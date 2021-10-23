@@ -10,8 +10,10 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     //Login/Register
     $router->post('/register', 'AuthController@register');
     $router->post('/login', 'AuthController@login');
-});
 
+    //Auth Check
+    $router->get('/auth_alive', 'AuthController@authAlive');
+});
 $router->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use ($router) {
     //Dashboard
     $router->get('/dashboard', 'DashboardController@getDashboard');
@@ -35,8 +37,8 @@ $router->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use (
 
     //Profile
     $router->get('/profile', 'UserController@getProfile');
-    $router->post('/update/profile/headline', 'UserController@updateProfileHeadline');
-    $router->post('/update/profile/information', 'UserController@updateProfileInformation');
+    $router->put('/update/profile/headline', 'UserController@updateProfileHeadline');
+    $router->put('/update/profile/information', 'UserController@updateProfileInformation');
     //$router->put('/update/profile/pic', 'UserController@updateProfilePic');
     $router->post('/update/setting', 'UserController@updateSetting');
 

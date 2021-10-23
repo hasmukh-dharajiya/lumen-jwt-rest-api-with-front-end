@@ -50,6 +50,6 @@
     </div>
 </main>
 <?php include "../include/js.php" ?>
-<script src="../assets/js/custom/change-passord.js"></script>
+<script src="../assets/js/custom/change-password.js"></script>
 </body>
 </html>

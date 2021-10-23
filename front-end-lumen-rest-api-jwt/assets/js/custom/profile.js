@@ -14,7 +14,7 @@ $(document).on("submit","#updateUser",function (e){
         name: userData.name,
         headline: userData.title
     }
-    DashboardClient.post(DashboardClient.domainUrl() + "/v1/update/profile/headline", postUserData)
+    DashboardClient.put(DashboardClient.domainUrl() + "/v1/update/profile/headline", postUserData)
         .then((response) => {
             if (response.status === true) {
                  toastr.info(response.message, "info", DashboardHelper.toastOption());
@@ -36,7 +36,7 @@ $(document).on("submit","#updateUserInfo",function (e){
         description: userData.description,
         location: userData.location
     }
-    DashboardClient.post(DashboardClient.domainUrl() + "/v1/update/profile/information", postUserData)
+    DashboardClient.put(DashboardClient.domainUrl() + "/v1/update/profile/information", postUserData)
         .then((response) => {
             if (response.status === true) {
                  toastr.info(response.message, "info", DashboardHelper.toastOption());
@@ -85,7 +85,6 @@ $(document).on("change", "#subscribe_to_newsletter", function () {
     postData.setting_value = $(this).is(":checked") ? 1 : 0;
     (new Dashboard()).updateSetting();
 })
-
 function Dashboard() {
     this.getProfile = () => {
         DashboardClient.get(DashboardClient.domainUrl() + "/v1/profile")
@@ -132,8 +131,13 @@ function Dashboard() {
                         $('#subscribe_to_newsletter').prop('checked', false)
                     }
                 }
+                DashboardHelper.preLoaderHide();
             })
             .catch((error) => {
+                if(error.status === 401){
+                    DashboardHelper.unAuthorize();
+                }
+                DashboardHelper.preLoaderHide();
                 console.log(error.responseJSON)
             })
     };

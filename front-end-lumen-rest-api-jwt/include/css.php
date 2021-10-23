@@ -16,4 +16,16 @@
         padding: 0;
         box-shadow: none;
     }
+    .preloader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-image: url('../assets/img/pre_loder.gif');
+        background-repeat: no-repeat;
+        background-color: rgba(255, 255, 255, 0.5);
+        background-position: center;
+    }
 </style>

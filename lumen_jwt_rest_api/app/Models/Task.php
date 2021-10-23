@@ -16,7 +16,7 @@ class Task extends Model
     {
         try {
             $result = $this->all();
-            if (isset($result) && !empty($result)) {
+            if (count($result) > 0) {
                 return $result;
             }
             return null;
@@ -46,7 +46,7 @@ class Task extends Model
     public function getSingleTask($id)
     {
         try {
-            $result = $this->where('id', $id)->get();
+            $result = $this->where('id', $id)->first();
             if (isset($result) & !empty($result)) {
                 return $result;
             }

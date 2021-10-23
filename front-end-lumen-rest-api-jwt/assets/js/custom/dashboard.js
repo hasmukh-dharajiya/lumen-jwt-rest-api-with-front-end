@@ -1,5 +1,5 @@
+DashboardHelper.preLoaderShow();
 (new Dashboard()).getDashboard();
-
 function Dashboard() {
     this.getDashboard = () => {
         DashboardClient.get(DashboardClient.domainUrl()+"/v1/dashboard")
@@ -90,10 +90,15 @@ function Dashboard() {
                                 </tr>
                         `);
                     })
+                    DashboardHelper.preLoaderHide();
                 }
             })
             .catch((error) => {
+                DashboardHelper.preLoaderHide();
                 console.log(error.responseJSON)
+                if(error.status === 401){
+                    DashboardHelper.unAuthorize();
+                }
             })
     };
 }

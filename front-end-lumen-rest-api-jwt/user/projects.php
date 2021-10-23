@@ -23,8 +23,20 @@
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
-                    <div class="card-header pb-0">
-                        <h6>Projects</h6>
+                    <div class="card-header pb-0" style="display: block">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h6>Projects</h6>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-sm btn-primary btn-floating" id="addProjectModel" data-toggle="modal" data-target="#addProject">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                    create New
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -40,7 +52,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                                 </tr>
                                 </thead>
-                                <tbody id="shoeProject">
+                                <tbody id="showProject">
 
                                 </tbody>
                             </table>
@@ -51,21 +63,21 @@
         </div>
     </div>
 
-    <!-- Modal-->
-    <div class="modal fade" id="editProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!--Add Modal-->
+    <div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add Project</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="updateUserInfo">
+                <form id="addProjectForm">
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="name">Project Name</label>
-                            <input type="text" class="form-control" placeholder="Name" name="name"  id="name">
+                            <input type="text" class="form-control" placeholder="Project Name" name="project_name"  id="name">
                         </div>
                         <div class="mb-3">
                             <label for="name">Budget</label>
@@ -77,13 +89,52 @@
                         </div>
                         <div class="mb-3">
                             <label for="name">status</label>
-                            <input type="text" class="form-control" placeholder="email" name="email"  id="infoEmail">
+                            <select class="form-control" name="status">
+                                <option value="1">Complete</option>
+                                <option value="0">Incomplete</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_1">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Edit Modal-->
+    <div class="modal fade" id="editProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Project</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="updateProjectForm">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="name">Project Name</label>
+                            <input type="text" class="form-control" placeholder="Project Name" name="project_name"  id="edit_name">
                         </div>
                         <div class="mb-3">
-                            <label for="name">Enter Location</label>
-                            <input type="text" class="form-control" placeholder="location" name="location"  id="infoLocation">
+                            <label for="name">Budget</label>
+                            <input type="text" class="form-control" placeholder="Budget" name="budget"  id="edit_budget">
                         </div>
-
+                        <div class="mb-3">
+                            <label for="name">User Responsible</label>
+                            <input type="text" class="form-control" placeholder="User Responsible" name="user_responsible"  id="edit_user_responsible">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name">status</label>
+                            <select class="form-control" name="status" id="edit_ststus">
+                                <option value="1">Complete</option>
+                                <option value="0">Incomplete</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_2">Close</button>
