@@ -30,6 +30,7 @@ $(document).on("submit", "#updateProjectForm", function (e) {
     postDataEdit.responsible_user = projectData.user_responsible;
     postDataEdit.status = projectData.status;
     (new Dashboard()).updateProject();
+    $(this).trigger("reset")
 })
 function Dashboard() {
     this.getProject = () => {
