@@ -76,7 +76,7 @@ Key Feature of Project.
 ![Login img](front-end-lumen-rest-api-jwt/assets/img/Dashboard-imgs/login.gif)
 
 ## Dashboard View
-`http://localhost/lumen-jwt-rest-api-with-front-end/front-end-lumen-rest-api-jwt/index.php`
+`http://localhost/lumen-jwt-rest-api-with-front-end/front-end-lumen-rest-api-jwt/user/index.php`
 
 ![Dashboard img](front-end-lumen-rest-api-jwt/assets/img/Dashboard-imgs/Dashboard.gif)
 
