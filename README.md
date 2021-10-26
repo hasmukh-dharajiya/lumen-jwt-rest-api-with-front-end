@@ -73,11 +73,11 @@ Key Feature of Project.
 ## Login View
 `http://localhost/lumen-jwt-rest-api-with-front-end/front-end-lumen-rest-api-jwt/login.php`
 
-![larave dashboard img](public/images/dashboard-image/register.gif)
+![Login img](front-end-lumen-rest-api-jwt/assets/img/Dashboard-imgs/login.gif)
 
-## Forgot Password View
-![larave forgot_password img](public/images/dashboard-image/forgot-password.gif)
+## Dashboard View
+`http://localhost/lumen-jwt-rest-api-with-front-end/front-end-lumen-rest-api-jwt/index.php`
 
-## dashboard View
-![larave dashboard img](public/images/dashboard-image/dashboard.png)
+![Dashboard img](front-end-lumen-rest-api-jwt/assets/img/Dashboard-imgs/Dashboard.gif)
+
 
